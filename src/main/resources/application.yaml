@@ -12,15 +12,15 @@ spring:
 #      hibernate.cache.use_second_level_cache: true
   datasource:
     hikari:
-      jdbc-url: jdbc:postgresql://localhost:5432/telegram_bot
+      jdbc-url: "jdbc:postgresql://localhost:5432/telegram_bot"
       maximum-pool-size: 10
       driver-class-name: org.postgresql.Driver
     username: postgres
     password: admin
-    url: jdbc:postgresql://localhost:5432/telegram_bot
+    url: "jdbc:postgresql://localhost:5432/telegram_bot"
     driver-class-name: org.postgresql.Driver
 
-  server:
-       port: 8080
+server:
+      port: 8081
 
 
