@@ -1,0 +1,26 @@
+spring:
+  jpa:
+    properties:
+      javax.persistence.validation.mode: none
+      hibernate.dialect: org.hibernate.dialect.PostgreSQL10Dialect
+      hibernate.show_sql: true
+      hibernate.connection.characterEncoding: utf8mb4
+      hibernate.connection.CharSet: utf8mb4
+      hibernate.connection.useUnicode: true
+#      hibernate.javax.cache.provider: org.ehcache.jsr107.EhcacheCachingProvider
+#      hibernate.cache.region.factory_class: org.hibernate.cache.ehcache.EhCacheRegionFactory
+#      hibernate.cache.use_second_level_cache: true
+  datasource:
+    hikari:
+      jdbc-url: jdbc:postgresql://localhost:5432/telegram_bot
+      maximum-pool-size: 10
+      driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: admin
+    url: jdbc:postgresql://localhost:5432/telegram_bot
+    driver-class-name: org.postgresql.Driver
+
+  server:
+       port: 8080
+
+
