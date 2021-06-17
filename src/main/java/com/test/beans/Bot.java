@@ -1,19 +1,17 @@
-package spring.beans;
+package com.test.beans;
 
+import com.test.services.BotService;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
-import spring.Services;
-import spring.model.Town;
-
-import java.util.Optional;
 
 @Component
 @Getter
@@ -21,39 +19,40 @@ import java.util.Optional;
 @AllArgsConstructor
 public class Bot extends TelegramLongPollingBot {
 
-    private Services service;
+    @Value("${telegram.bot-name}")
+    private String botName;
+
+    @Value("${telegram.token}")
+    private String token;
+
+    private BotService botService;
 
     @Override
     public String getBotUsername() {
-        return  "CitiesInfo_bot";
+        return botName;
     }
 
     @Override
     public String getBotToken() {
-        return "1895037071:AAH2hag5f-PbBYpq_zr3Yzv4wGJ9yyYIp_4";
+        return token;
     }
 
     @SneakyThrows
     @Override
     public void onUpdateReceived(Update update) {
-        Message message = update.getMessage();
+        Message inputMessage = update.getMessage();
         Long chatId = update.getMessage().getChatId();
         SendMessage sendMessage = new SendMessage();
-        if (message.getText() != null) {
-            Optional<Town> townName = service.getTownRepository().findByName(message.getText());
-            if (townName.isPresent()) {
-                sendMessage.setText(townName.get().getName());
-            } else {
-                sendMessage.setText("введите другой город");
-            }
+        if (inputMessage.getText() != null) {
+            String botMessage = botService.generateBotMessage(inputMessage.getText());
+            sendMessage.setText(botMessage);
             sendMessage.setChatId(chatId.toString());
             execute(sendMessage);
         }
     }
 
-
     @Autowired
-    public void setService(Services service) {
-        this.service = service;
+    public void setBotService(BotService botService) {
+        this.botService = botService;
     }
 }

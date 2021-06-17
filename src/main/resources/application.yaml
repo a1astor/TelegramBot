@@ -7,9 +7,7 @@ spring:
       hibernate.connection.characterEncoding: utf8mb4
       hibernate.connection.CharSet: utf8mb4
       hibernate.connection.useUnicode: true
-#      hibernate.javax.cache.provider: org.ehcache.jsr107.EhcacheCachingProvider
-#      hibernate.cache.region.factory_class: org.hibernate.cache.ehcache.EhCacheRegionFactory
-#      hibernate.cache.use_second_level_cache: true
+      hibernate.hbm2ddl.auto: create
   datasource:
     hikari:
       jdbc-url: "jdbc:postgresql://localhost:5432/telegram_bot"
@@ -22,5 +20,9 @@ spring:
 
 server:
       port: 8081
+
+telegram:
+    bot-name: CitiesInfo_bot
+    token: 1895037071:AAH2hag5f-PbBYpq_zr3Yzv4wGJ9yyYIp_4
 
 

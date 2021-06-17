@@ -1,5 +1,6 @@
-package spring.model;
+package com.test.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,17 +14,15 @@ import javax.persistence.Table;
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name = "message")
-public class Message {
+@AllArgsConstructor
+@Table(name = "cities")
+public class City {
 
     @Id
-    @Column(name = "message_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long message_id;
+    @Column(name = "id")
+    private Long id;
 
-    @Column(name = "town_id")
-    private long town_id;
-
-    @Column(name = "message_content_id")
-    private long description_id;
+    @Column(name = "name")
+    private String name;
 }
