@@ -6,4 +6,5 @@
 необходимо через REST WebService.  Используемые технологии: SpringBoot, SpringMVC, SpringData, Hibernate, Java не ниже 1.8. Для сборки проекта использовать Maven.
 
 bot-name: CitiesInfo_bot
+
 token: 1895037071:AAH2hag5f-PbBYpq_zr3Yzv4wGJ9yyYIp_4
