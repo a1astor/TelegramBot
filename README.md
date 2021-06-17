@@ -8,3 +8,5 @@
 bot-name: CitiesInfo_bot
 
 token: 1895037071:AAH2hag5f-PbBYpq_zr3Yzv4wGJ9yyYIp_4
+
+REST api http://localhost:8081/swagger-ui/ 
